@@ -2,16 +2,32 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TweetComponentComponent } from './tweet-component/tweet-component.component';
 import { ExploreBarComponent } from './explore-bar/explore-bar.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
   {
-    path:'explore-bar',component:ExploreBarComponent
+    path: 'profile/:userId', component: ProfileComponent
   },
   {
-    path:'tweet-component/:tweetId',component:TweetComponentComponent
+    path: 'explore-bar', component: ExploreBarComponent
   },
   {
-    path:'**',redirectTo:'explore-bar',pathMatch:'full'
+    path: 'tweet-component/:tweetId', component: TweetComponentComponent
+  },
+  {
+    path: 'signup', component: SignupComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path:'feed/:userId',component:FeedComponent
+  },
+  {
+    path: '**', redirectTo: '/explore-bar', pathMatch: 'full'
   }
 ];
 

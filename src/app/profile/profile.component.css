@@ -1,0 +1,11 @@
+.profile-img{
+    margin-top: -75px;
+    margin-left: 15px;
+}
+.media{
+    border-bottom: 1px solid #e1e8ed;
+    padding-bottom: 15px;
+}
+.media:last-child{
+    border-bottom: none;
+}

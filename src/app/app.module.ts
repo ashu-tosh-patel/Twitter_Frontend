@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExploreBarServiceService } from './explore-bar/explore-bar-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TweetComponentComponent } from './tweet-component/tweet-component.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LoginComponent,
     SignupComponent,
     TweetComponentComponent,
-    LandingPageComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

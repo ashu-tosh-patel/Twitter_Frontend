@@ -3,20 +3,20 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6 mx-auto" *ngFor="let item of userDetailsById">
+        <div class="col-6 mx-auto">
             <div class="card mt-3" style="width: 100%;">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3"><img src="assets/cat.jpg" alt="" class="rounded-circle" style="width: 50%;"></div>
+                        <div class="col-lg-3"><img src="assets/cat.jpg" alt="" class="rounded-circle" style="width: 50%;height: 80%;"></div>
                         <div class="col-lg-6">
-                            <h4>{{item.name}}</h4>
-                            <h4>{{item.userName}}</h4>
+                            <h4>{{userDetailsById[0].name}}</h4>
+                            <h4>{{userDetailsById[0].username}}</h4>
                         </div>
                         <div class="col-lg-3">...</div>
                     </div>
                     <div class="mt-4">
-                        <p class="card-text">{{item.tweetDTOs.message}}</p>
-                        <p class="card-text">{{item.createdAt.substr(11,8)}} - {{item.createdAt.substr(0,10)}} - Twitter Web Client</p>
+                        <p class="card-text">{{tweetWithId[0].message}}</p>
+                        <p class="card-text">{{tweetWithId[0].createdAt.substr(11,8)}} - {{tweetWithId[0].createdAt.substr(0,10)}} - Twitter Web Client</p>
                         <p class="card-text"><b>100</b> Retweets <b>5</b> Quote Tweets <b>25</b> Likes</p>
                     </div>
                     <hr>

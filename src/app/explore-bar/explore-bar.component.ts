@@ -55,7 +55,7 @@ export class ExploreBarComponent implements OnInit{
 
   showclickedTweet(value: number){
     // console.log(str)
-    this.router.navigate(['/tweet-component',value])
+    this.router.navigate(['/tweet-detail',value])
   }
 
 }

@@ -15,6 +15,8 @@ import { ExploreBarServiceService } from './explore-bar/explore-bar-service.serv
 import { HttpClientModule } from '@angular/common/http';
 import { TweetComponentComponent } from './tweet-component/tweet-component.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     SignupComponent,
     TweetComponentComponent,
-    ProfileComponent
+    ProfileComponent,
+    LandingPageComponent,
+    TweetDetailsComponent
   ],
   imports: [
     BrowserModule,

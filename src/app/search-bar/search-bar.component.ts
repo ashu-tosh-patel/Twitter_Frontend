@@ -29,7 +29,7 @@ export class SearchBarComponent implements OnInit{
   errorMessage !: any 
 
   showclickedUser(value: number){
-    this.router.navigate(['user-profile',value])
+    this.router.navigate(['profile',value])
   }
 
   getSuggestions(query: any): Observable<any[]>{

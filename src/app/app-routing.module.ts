@@ -6,6 +6,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FeedComponent } from './feed/feed.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 
 const routes: Routes = [
   {
@@ -27,7 +29,13 @@ const routes: Routes = [
     path:'feed/:userId',component:FeedComponent
   },
   {
-    path: '**', redirectTo: '/explore-bar', pathMatch: 'full'
+    path:'landing-page',component:LandingPageComponent
+  },
+  {
+    path:'tweet-detail/:tweetId',component:TweetDetailsComponent
+  },
+  {
+    path: '**', redirectTo: '/signup', pathMatch: 'full'
   }
 ];
 

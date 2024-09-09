@@ -5,6 +5,7 @@ import { ExploreBarComponent } from './explore-bar/explore-bar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,10 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: '**', redirectTo: 'explore-bar', pathMatch: 'full'
+    path:'feed/:userId',component:FeedComponent
+  },
+  {
+    path: '**', redirectTo: '/explore-bar', pathMatch: 'full'
   }
 ];
 

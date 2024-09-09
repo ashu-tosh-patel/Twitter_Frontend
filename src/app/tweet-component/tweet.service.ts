@@ -11,13 +11,13 @@ export class TweetService {
 
   constructor(private http: HttpClient) { }
 
-  getAllTweets(): Observable<tweetData[]>{
-    // let params = new HttpParams().set('id',value.toString()) 
-    return this.http.get<tweetData[]>('http://localhost:8080/tweet-api/user/tweet')
-  }
-  getUserDetails(): Observable<any>{
-    return this.http.get<any>('http://localhost:8765/users/getAllUsersDetails')
-  }
+  // getAllTweets(): Observable<tweetData[]>{
+  //   // let params = new HttpParams().set('id',value.toString()) 
+  //   return this.http.get<tweetData[]>('http://localhost:8080/tweet-api/user/tweet')
+  // }
+  // getUserDetails(): Observable<any>{
+  //   return this.http.get<any>('http://localhost:8765/users/getAllUsersDetails')
+  // }
 }
 function Of(): Observable<any> {
   throw new Error('Function not implemented.');

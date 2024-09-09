@@ -3,6 +3,38 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div>
+            <div class="card mt-3" style="width: 100%; max-width: 700px;" *ngFor="let tweet of tweets">
+                <div class="card-body" >
+                    <div class="row">
+                        <div class="col-lg-3"><img src="assets/cat.jpg" alt="" class="rounded-circle" style="width: 50%;height: 80%;"></div>
+                        <div class="col-lg-6">
+                            <h4>{{user.name}}</h4>
+                            <h4>@{{user.username}}</h4>
+                        </div>
+                        <div class="col-lg-3">...</div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="card-text">{{tweet.message}}</p>
+                        <p class="card-text">{{tweet.createdAt.substr(11,8)}} - {{tweet.createdAt.substr(0,10)}} - Twitter Web Client</p>
+                        <p class="card-text"><b>100</b> Retweets <b>5</b> Quote Tweets <b>25</b> Likes</p>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3"><a href=""><img src="assets/message.png" alt="" style="width: 30%"></a></div>
+                        <div class="col-md-3"><a href=""><img src="assets/retweet.jpg" alt="" style="width: 30%"></a></div>
+                        <div class="col-md-3"><a href=""><img src="assets/like.jpg" alt="" style="width: 30%"></a></div>
+                        <div class="col-md-3"><a href=""><img src="assets/shareIcon.jpg" alt="" style="width: 30%"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- 
+<div class="container-fluid">
+    <div class="row">
         <div class="col-6 mx-auto">
             <div class="card mt-3" style="width: 100%;">
                 <div class="card-body">
@@ -27,13 +59,7 @@
                         <div class="col-md-3"><a href=""><img src="assets/shareIcon.jpg" alt="" style="width: 30%"></a></div>
                     </div>
                 </div>
-                <!-- <app-tweet-component> -->
-                    <!-- <div >
-                        <p>{{item.userId}}</p>
-                        <p>{{item.message}}</p>
-                    </div> -->
-                <!-- </app-tweet-component> -->
             </div>
         </div>
     </div>
-</div>
+</div> -->

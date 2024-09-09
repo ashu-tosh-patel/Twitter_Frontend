@@ -1,1 +1,64 @@
-<p>explore-bar works!</p>
+<!-- <p>explore-bar works!</p> -->
+
+
+<div class="container-fluid">
+    <div class="search-container">
+        <input [formControl]="searchControl" placeholder="Search Tweets.....">
+        <ul *ngIf="suggestions$ | async as suggestions">
+            <li *ngFor="let suggestion of suggestions" (click)="showclickedTweet(suggestion.id)">
+                {{suggestion.userId}} |{{suggestion.message}} | {{suggestion.createdAt}}
+            </li>
+        </ul>
+    </div>
+    <h3>Trends For you</h3>
+    <hr>
+    <!-- 1 -->
+    <h6>Trending worldwide</h6>
+    <h4>#BreakingNews</h4>
+    <div class="card" style="width: 100%;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Space</h5>
+                    <p class="card-text">Lunar photography improves the discovery of the moon</p>
+                </div>
+            </div>
+            <div class="col-md-4 container-fluid">
+                <img src="assets/Lunar.jpg" class="card-img img-fluid" alt="..." height="100%">
+            </div>
+        </div>
+    </div>
+    <h6>10,094 people are Tweeting about this</h6>
+    <hr>
+    <!-- 2 -->
+    <h6>Trending worldwide</h6>
+    <h4>#WorldNews</h4>
+    <h4>125K Tweets</h4>
+    <h6>5,094 people are Tweeting about this</h6>
+    <hr>
+    <!-- 3 -->
+    <h6>Trending worldwide</h6>
+    <h4>#BreakingNews</h4>
+    <div class="card" style="width: 100%;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Animals</h5>
+                    <p class="card-text">These cats are ready for #InternationalCatDay</p>
+                </div>
+            </div>
+            <div class="col-md-4 container-fluid">
+                <img src="assets/cat.jpg" class="card-img img-fluid" alt="..." height="100%">
+            </div>
+        </div>
+    </div>
+    <h6>2,757 people are Tweeting about this</h6>
+    <hr>
+    <!-- 4 -->
+    <h6>Trending worldwide</h6>
+    <h4>#GreatestOfAllTime</h4>
+    <h4>100K Tweets</h4>
+    <h6>4,123 people are Tweeting about this</h6>
+    <hr>
+    <a href="">Show more</a>
+</div>

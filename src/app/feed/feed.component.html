@@ -1,1 +1,36 @@
-<p>feed works!</p>
+<!-- <p>feed works!</p> -->
+
+
+<div class="container-fluid">
+    // Tweets of user following any other user displayed
+    <div class="card mt-3" style="width: 50%;" *ngFor="let user of usersProfileForFeed">
+        <div class="card-body" *ngIf="user.tweetDTOs.length >= 1">
+            <div class="row">
+                <div class="col-lg-3"><img src="assets/cat.jpg" alt="" class="rounded-circle" style="width: 50%;height: 80%;"></div>
+                <div class="col-lg-6">
+                    <h4>{{user.name}}</h4>
+                    <h4>{{user.username}}</h4>
+                </div>
+                <div class="col-lg-3">...</div>
+            </div>
+            <div class="mt-4">
+                <p class="card-text">{{user.tweetDTOs[0].message}}</p>
+                <p class="card-text">{{user.tweetDTOs[0].createdAt.substr(11,8)}} - {{user.tweetDTOs[0].createdAt.substr(0,10)}} - Twitter Web Client</p>
+                <p class="card-text"><b>100</b> Retweets <b>5</b> Quote Tweets <b>25</b> Likes</p>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3"><a href=""><img src="assets/message.png" alt="" style="width: 30%"></a></div>
+                <div class="col-md-3"><a href=""><img src="assets/retweet.jpg" alt="" style="width: 30%"></a></div>
+                <div class="col-md-3"><a href=""><img src="assets/like.jpg" alt="" style="width: 30%"></a></div>
+                <div class="col-md-3"><a href=""><img src="assets/shareIcon.jpg" alt="" style="width: 30%"></a></div>
+            </div>
+        </div>
+        <!-- <app-tweet-component> -->
+            <!-- <div >
+                <p>{{item.userId}}</p>
+                <p>{{item.message}}</p>
+            </div> -->
+        <!-- </app-tweet-component> -->
+    </div>
+</div>

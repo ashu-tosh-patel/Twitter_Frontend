@@ -10,6 +10,10 @@ import { FeedComponent } from './feed/feed.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ExploreBarServiceService } from './explore-bar/explore-bar-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TweetComponentComponent } from './tweet-component/tweet-component.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,18 @@ import { SignupComponent } from './signup/signup.component';
     FeedComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TweetComponentComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ExploreBarServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

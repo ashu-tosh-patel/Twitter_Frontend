@@ -11,7 +11,7 @@ export class FeedService {
   constructor(private http: HttpClient) { }
 
   getFollowingIdApi(userId: number) : Observable<number[]>{
-    return this.http.get<number[]>('http://localhost:8082/followingAndFollower-api/following/'+3)
+    return this.http.get<number[]>('http://localhost:8082/followingAndFollower-api/following/'+1)
   }
 
   getUsersApi() : Observable<userData[]>{

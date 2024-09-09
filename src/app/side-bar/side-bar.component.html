@@ -1,7 +1,9 @@
 <div class="sidebar">
     <div class="sidebar-content">
         <div class="user">
-            <img src="" alt="profile"/>
+            <div class="avatar">
+                <img src="../../assets/cat.jpg" alt="profile" />
+            </div>
             <p (click)="showProfile(3)" class="btn">Hey Ashu & Sachin</p>
             <p>ashusachin@infy.com</p>
         </div>
@@ -9,46 +11,50 @@
             <ul>
                 <li>
                     <!-- <NavLink exact to="/"> -->
-                        <a href="">
-                            <img src="" alt="Home icon" />
-                            <span>Home</span>                       
-                        </a>
+                    <a href="">
+                        <span style="margin-right: 8px;"><i class="fa-solid fa-house"></i></span>
+                        <div>Home</div>
+                    </a>
                     <!-- </NavLink> -->
                 </li>
                 <li>
                     <!-- <NavLink to="/create"> -->
-                        <a href="">
-                            <img src="" alt="Not icon" />
-                            <span>Notifications</span>
-                        </a>
+                    <a href="">
+                        <span style="margin-right: 8px;"><i class="fa-solid fa-bell"></i></span>
+                        <span>Notifications</span>
+                    </a>
                     <!-- </NavLink> -->
                 </li>
                 <li>
                     <!-- <NavLink to="/create"> -->
-                        <a href="">
-                            <img src="" alt="Messages icon" />
-                            <span>Messages</span>
-                        </a>
+                    <a href="">
+                        <span style="margin-right: 8px;"><i class="fa-solid fa-comment"></i></span>
+                        <span>Messages</span>
+                    </a>
                     <!-- </NavLink> -->
                 </li>
                 <li>
                     <!-- <NavLink to="/create"> -->
-                        <a href="">
-                            <img src="" alt="Profile icon" />
-                            <span>Profile</span>
-                        </a>
+                    <a href="">
+                        <span style="margin-right: 8px;"><i class="fa-solid fa-user"></i></span>
+                        <span>Profile</span>
+                    </a>
                     <!-- </NavLink> -->
                 </li>
                 <li>
                     <!-- <NavLink to="/create"> -->
-                        <a href="">
-                            <img src="" alt="More icon" />
-                            <span>More</span>
-                        </a>
+                    <a href="">
+                        <span style="margin-right: 8px;"><i class="fa-solid fa-bars"></i></span>
+                        <span>More</span>
+                    </a>
                     <!-- </NavLink> -->
+                </li>
+                <li>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-primary form-control">Post</button>
+                    </div>
                 </li>
             </ul>
         </nav>
     </div>
-
 </div>

@@ -1,8 +1,7 @@
 <!-- <p>feed works!</p> -->
 
 
-<div class="container">
-    // Tweets of user following any other user displayed
+<!-- <div class="container"> -->
     <!-- <div class="card mt-3" style="width: 50%;" *ngFor="let user of usersProfileForFeed">
         <div class="card-body" *ngIf="user.tweetDTOs.length >= 1">
             <div class="row">
@@ -27,5 +26,5 @@
             </div>
         </div>
     </div> -->
-        <app-tweet-component class="card mt-3" *ngFor="let user of usersProfileForFeed" [tweets]="user.tweetDTOs.slice(0,1)" [user]=user></app-tweet-component>
-</div>
+        <app-tweet-component *ngFor="let user of usersProfileForFeed" [tweets]="user.tweetDTOs.slice(0,1)" [user]=user></app-tweet-component>
+<!-- </div> -->

@@ -1,23 +1,18 @@
 <form class="auth-form">
     <h2>Login</h2>
-    <label>
-        <span>Email:</span>
-        <input
-            required
-            type="email"
-            value="abc@yz.com"
-        />
-    </label>
-    <label>
-        <span>Password:</span>
-        <input
-            required
-            type="password"
-            value="&*HK77d"
-        />
-    </label>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input required id="email" type="email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input required id="password" type="password">
+    </div>
 
-    <button class="btn-primary">Login</button>
-    <!-- {isPending && <button className="btn" disabled>Loading...</button>} -->
-    <!-- {error && <div className="error">{error}</div>} -->
+    <div class="form-group">
+        <br>
+        <button class="form-control" class="btn btn-primary">Log In</button>
+        <!-- {isPending && <button className="btn" disabled>Loading...</button>} -->
+        <!-- {error && <div className="error">{error}</div>} -->
+    </div>
 </form>

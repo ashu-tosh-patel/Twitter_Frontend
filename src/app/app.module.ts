@@ -17,6 +17,7 @@ import { TweetComponentComponent } from './tweet-component/tweet-component.compo
 import { ProfileComponent } from './profile/profile.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
     TweetComponentComponent,
     ProfileComponent,
     LandingPageComponent,
-    TweetDetailsComponent
+    TweetDetailsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

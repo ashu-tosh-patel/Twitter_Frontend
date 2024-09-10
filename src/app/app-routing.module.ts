@@ -8,8 +8,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { FeedComponent } from './feed/feed.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
+  {
+    path: 'home-page',component: HomePageComponent
+  },
   {
     path: 'profile/:userId', component: ProfileComponent
   },
@@ -29,13 +33,13 @@ const routes: Routes = [
     path:'feed/:userId',component:FeedComponent
   },
   {
-    path:'landing-page',component:LandingPageComponent
+    path:'landing-page/:userId',component:LandingPageComponent
   },
   {
     path:'tweet-detail/:tweetId',component:TweetDetailsComponent
   },
   {
-    path: '**', redirectTo: '/signup', pathMatch: 'full'
+    path: '**', redirectTo: '/home-page', pathMatch: 'full'
   }
 ];
 

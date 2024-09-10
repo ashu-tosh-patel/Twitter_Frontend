@@ -1,26 +1,59 @@
-<form class="auth-form">
+<form class="auth-form" [formGroup]="signUpForm" (ngSubmit)="submitBtn()">
     <h2>Sign up</h2>
     <div class="form-group">
-        <label for="email">Email:</label>
-        <input required id="email" type="email">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input required class="form-control" id="password" type="password">
+        <label for="name">Name:</label>
+        <input required id="name" type="text" class="form-control" formControlName="name">
+        <div class="alert alert-danger" *ngIf="(signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched) && signUpForm.controls['name'].invalid">
+            <span *ngIf="signUpForm.controls['name']?.errors?.['required']">Name is Required</span>
+            <span *ngIf="signUpForm.controls['name']?.errors?.['pattern']">Name should start with Capital Alphabet</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="username">Username:</label>
-        <input required class="form-control" id="username" type="text">
+        <input required class="form-control" id="username" type="text" formControlName="username">
+        <div class="alert alert-danger" *ngIf="(signUpForm.controls['username'].dirty || signUpForm.controls['username'].touched) && signUpForm.controls['username'].invalid">
+            <span *ngIf="signUpForm.controls['username']?.errors?.['required']">Username is Required</span>
+            <span *ngIf="signUpForm.controls['username']?.errors?.['pattern']">Username should have alpabets along with minimum 2 number maximum 4</span>
+        </div>
     </div>
     <div class="form-group">
-        <label for="dp">Profile thumbnail:</label>
-        <input id="dp" dp class="form-control" type="file">
-        <!-- <div className="error">{thumbnailError}</div> -->
+        <label for="email">Email:</label>
+        <input required id="email" type="email" class="form-control" formControlName="email">
+        <div class="alert alert-danger" *ngIf="(signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched) && signUpForm.controls['email'].invalid">
+            <span *ngIf="signUpForm.controls['email']?.errors?.['required']">Email is Required</span>
+            <span *ngIf="signUpForm.controls['email']?.errors?.['pattern']">Email should be of format abc@google.com</span>
+        </div>
     </div>
     <div class="form-group">
-        <br>
-        <button class="form-control" class="btn btn-primary" [routerLink]="['/login']">Sign Up</button>
-        <!-- {isPending && <button className="btn" disabled>Loading...</button>} -->
-        <!-- {error && <div className="error">{error}</div>} -->
+        <label for="password">Password:</label>
+        <input class="form-control" id="password" type="password" formControlName="password">
+        <div class="alert alert-danger" *ngIf="(signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched) && signUpForm.controls['password'].invalid">
+            <span *ngIf="signUpForm.controls['password']?.errors?.['required']">Password is Required</span>
+            <span *ngIf="signUpForm.controls['password']?.errors?.['minlength']">Password should be of minimum 8 characters</span>
+            <span *ngIf="signUpForm.controls['password']?.errors?.['maxlength']">Password should be of maximum 16 characters</span>
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="cpassword">Confirm Password:</label>
+        <input class="form-control" id="cpassword" type="password" formControlName="cpassword">
+    </div> -->
+    <div class="form-group mt-2">
+        <div class="form-group">
+            <!-- button should be disabled till bookingForm becomes valid -->
+            <button class="btn btn-primary" id="confirmBooking" type="submit" [disabled]="signUpForm.invalid">
+                Submit
+            </button>
+        </div>
+        <div *ngIf="errorMessage != null" class="text text-danger" id="errorMessage">
+            <!-- ERROR MESSAGE COMES HERE -->
+            {{errorMessage}}
+        </div>
+        <div *ngIf="successMessage != null" class="text text-success" id="successMessage">
+            <!-- SUCCESS MESSAGE COMES HERE -->
+            {{successMessage}}
+        </div>
+        <a [routerLink]="['/login']">Go back To Login Page</a>
+        <!-- <button type="submit" class="btn btn-primary" [routerLink]="['/login']"
+        [disabled]="signUpForm.invalid">Sign Up</button> -->
     </div>
 </form>

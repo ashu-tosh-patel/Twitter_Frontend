@@ -13,12 +13,12 @@
             </div>
             <div class="tweet-body">
                 <p class="tweet-message">{{tweet.message}}</p>
-                <div class="tweet-mentions">
+                <div class="tweet-mentions text-primary">
                     <ul>
                         <li *ngFor="let mention of tweet.mentions">{{mention}}</li>
                     </ul>
                 </div>
-                <div class="tweet-hashtags">
+                <div class="tweet-hashtags text-primary">
                     <ul>
                         <li *ngFor="let hashtag of tweet.hashtags">{{hashtag}}</li>
                     </ul>

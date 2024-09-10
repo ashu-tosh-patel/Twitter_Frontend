@@ -21,13 +21,15 @@ export class TweetComponentComponent implements OnInit {
   // userDetailsById: userData[] = []
 
   @Input()
-  user:any=null;
+  user: any = { id: 1 };
+
+  profileImageLink: string = `http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/${this.user.id}.jpg`;
 
   @Input()
-  tweets:any=[];
+  tweets: any = [];
 
   ngOnInit(): void {
-    
+
   }
   // Get user id of that user
   // userIdOfUser !: any
@@ -39,8 +41,8 @@ export class TweetComponentComponent implements OnInit {
   //   this.getTweetsOfUser()
   //   this.getUserDetails()
   //   // this.tweetWithId = this.tweetsByUser
-    
-    
+
+
   // }
 
   // getTweetsOfUser() {

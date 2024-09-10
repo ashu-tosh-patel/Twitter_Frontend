@@ -1,1 +1,111 @@
+.container {
+    /* display: flex; */
+    justify-content: center;
+}
 
+.tweet-card {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.tweet-user-info {
+    flex: 1;
+}
+
+.tweet-user-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.tweet-user-username {
+    color: #657786;
+    margin: 0;
+}
+
+.tweet-options {
+    color: #657786;
+    cursor: pointer;
+}
+
+/* Tweet body styling */
+.tweet-body {
+    margin-bottom: 10px;
+}
+
+.tweet-message {
+    margin: 0;
+    font-size: 16px;
+}
+
+.tweet-mentions, .tweet-hashtags, .tweet-links {
+    margin-top: 5px;
+}
+
+.tweet-mentions ul, .tweet-hashtags ul, .tweet-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tweet-mentions li, .tweet-hashtags li, .tweet-links li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.tweet-mentions li a, .tweet-hashtags li a, .tweet-links li a {
+    color: #1da1f2;
+    text-decoration: none;
+}
+
+.tweet-image-container {
+    margin-top: 10px;
+}
+
+.tweet-image-container img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Tweet footer styling */
+.tweet-footer {
+    color: #657786;
+    font-size: 14px;
+}
+
+.tweet-engagement {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Actions styling */
+.tweet-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #e1e8ed;
+}
+
+.action-icon {
+    width: 24px;
+    height: 24px;
+}

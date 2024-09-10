@@ -1,14 +1,16 @@
 <!-- <p>search-bar works!</p> -->
 
 
-<div class="container-fluid">
-    <div class="search-container" style="width: 80%;">
-        <input [formControl]="searchControl" class="form-control" placeholder="Search Users.....">
-        <ul *ngIf="suggestions$ | async as suggestions">
-            <li *ngFor="let suggestion of suggestions" (click)="showclickedUser(suggestion.id)">
-                <img src="assets/cat.jpg" alt="" style="width: 12%;" class="rounded-circle">
-                {{suggestion.username}}
-            </li>
-        </ul>
+<div class="container">
+    <div class="row">
+        <div class="search-container">
+            <input [formControl]="searchControl" class="form-control" placeholder="Search Users.....">
+            <ul *ngIf="suggestions$ | async as suggestions">
+                <li *ngFor="let suggestion of suggestions" (click)="showclickedUser(suggestion.id)">
+                    <img src="assets/cat.jpg" alt="" style="width: 12%;" class="rounded-circle">
+                    {{suggestion.username}}
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

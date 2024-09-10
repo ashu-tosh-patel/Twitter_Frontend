@@ -9,3 +9,7 @@
 .media:last-child{
     border-bottom: none;
 }
+.myContainer{
+    display: flex;
+    justify-content: center;
+}

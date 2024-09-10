@@ -19,7 +19,7 @@
                 </li>
                 <li>
                     <!-- <NavLink to="/create"> -->
-                    <a href="">
+                    <a href="" class="">
                         <span style="margin-right: 8px;"><i class="fa-solid fa-bell"></i></span>
                         <span>Notifications</span>
                     </a>
@@ -49,12 +49,114 @@
                     </a>
                     <!-- </NavLink> -->
                 </li>
-                <li>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <button class="btn btn-primary form-control">Post</button>
-                    </div>
-                </li>
             </ul>
         </nav>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button> -->
+        <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#addPersonModal">
+            Create Tweet
+        </button>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+<div class="modal fade" id="addPersonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">What are you thinking today!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup] = "tweetForm" (ngSubmit)="addTweet()">
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" class="form-control" formControlName = "description" placeholder="Enter text upto 280 characters"
+                            required="required"></textarea>
+                        <div class="descriptionError" *ngIf="tweetForm.controls['description'].touched">
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['required']">It is a required field</p>
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['maxlength']">Description is too long! Only 280 characters allowed</p>
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['minlength']">Description is too short!</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mediaType">Select Type of Media:</label>
+                        <select #media id="mediaType" formControlName="mediaType" class="form-select" (change)="selectedFile && checkFileType(selectedFile)">
+                            <option selected disabled aria-label="Default select example">--Select an option--</option>
+                            <option *ngFor="let option of mediaOptions" [value]="option.id">{{option.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="media.value">
+                        <div>
+                            <label for="file">Upload File:</label>
+                            <input id="file" formControlName="media" class="form-control" type="file" (change)="onFileChange($event)">
+                        </div>
+                        <div class="mediaError" *ngIf="file?.touched && file?.invalid">
+                            <p *ngIf="file?.errors?.['invalidFileType']" class="alert alert-danger">File type does not match the selected media type</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hashtags">Add Hashtags:</label>
+                        <input id="hashtags" type="text" class="form-control" placeholder="#chill" formControlName="hashtags">
+                        <div class="hashtagError" *ngIf="tweetForm.controls['hashtags'].touched">
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['hashtags'].errors?.['pattern']">Enter space seperated tags all starting with # and no extra spaces</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mentions">Add Mentions:</label>
+                        <input id="mentions" type="text" class="form-control" placeholder="@ashu" formControlName="mentions">
+                        <div class="mentionsError" *ngIf="tweetForm.controls['mentions'].touched">
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['mentions'].errors?.['pattern']">Enter space seperated tags all starting with @ and no extra spaces</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="links">Add Links:</label>
+                        <input id="links" type="text" class="form-control" placeholder="http://www.github.com" formControlName="links">
+                        <div class="linksError" *ngIf="tweetForm.controls['links'].touched">
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['links'].errors?.['pattern']">Incorrect link</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label>Gender:</label>
+                        <div class="form-check">
+                            <label class="form-check-label"></label>
+                            <input type="radio" name="gender" value="male" class="form-check-input">Male
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label"></label>
+                            <input type="radio" name="gender" value="female" class="form-check-input">Female
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" class="form-control" name="">
+                    </div> -->
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button [disabled]="tweetForm.invalid" class="btn btn-secondary mr-3">Schedule</button>
+                    <button [disabled]="tweetForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

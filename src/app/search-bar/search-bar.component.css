@@ -1,7 +1,10 @@
 .search-container{
+    width: 100%;
     position: relative;
-    width: 300px;
+    /* width: 300px; */
+    max-width: 670px;
     z-index: 1;
+    margin-bottom: 10px;
 }
 
 input{

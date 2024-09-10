@@ -33,13 +33,14 @@ export class SearchBarComponent implements OnInit{
   }
 
   getSuggestions(query: any): Observable<any[]>{
+    console.log(query)
     if(!query.trim()){
       return of([]);
     }
     const filteredSuggestions = this.allSuggestions.filter(item =>
-      item.name.toLowerCase().includes(query.toLowerCase()) ||
-      item.username.toLowerCase().includes(query.toLowerCase()) ||
-      item.bio.toLowerCase().includes(query.toLowerCase())
+      (item.name != null && item.name.toLowerCase().includes(query.toLowerCase())) ||
+      (item.username != null && item.username.toLowerCase().includes(query.toLowerCase()) ) ||
+      (item.bio != null && item.bio.toLowerCase().includes(query.toLowerCase()))
     )
     return of(filteredSuggestions)
   }

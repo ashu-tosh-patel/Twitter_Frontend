@@ -45,7 +45,7 @@ export class ExploreBarComponent implements OnInit{
     this.exploreBarService.getTweets().subscribe(
       (data: tweetsData[]) => {
         this.allSuggestions = data;
-        console.log('Data recv',this.allSuggestions)
+        // console.log('Data recv',this.allSuggestions)
       },
       (error) => {
         this.errorMessage = error

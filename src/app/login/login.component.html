@@ -1,18 +1,33 @@
-<form class="auth-form">
+<form class="auth-form" [formGroup]="loginForm" (ngSubmit)="verifyCredentials()">
     <h2>Login</h2>
     <div class="form-group">
         <label for="email">Email:</label>
-        <input required id="email" type="email">
+        <input class="form-control" id="email" type="email" [(ngModel)]="emailIncoming" name="email" formControlName="email">
+        <div class="alert alert-danger" *ngIf="(loginForm.controls['email'].dirty || loginForm.controls['email'].touched) && loginForm.controls['email'].invalid">
+            <span *ngIf="loginForm.controls['email']?.errors?.['required']">Email is Required</span>
+            <span *ngIf="loginForm.controls['email']?.errors?.['pattern']">Email should be of format abc@google.com</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="password">Password:</label>
-        <input required id="password" type="password">
+        <input class="form-control" id="password" type="password" [(ngModel)]="passwordIncoming" name="password" formControlName="password">
+        <div class="alert alert-danger" *ngIf="(loginForm.controls['password'].dirty || loginForm.controls['password'].touched) && loginForm.controls['password'].invalid">
+            <span *ngIf="loginForm.controls['password']?.errors?.['required']">Password is Required</span>
+            <!-- <span *ngIf="loginForm.controls['password']?.errors?.['pattern']">Password can contain words along with special character !,@,_</span> -->
+            <span *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password should be of minimum 8 characters</span>
+            <span *ngIf="loginForm.controls['password']?.errors?.['maxlength']">Password should be of maximum 16 characters</span>
+        </div>
     </div>
 
     <div class="form-group">
         <br>
-        <button class="form-control" class="btn btn-primary" [routerLink]="['/landing-page']">Log In</button>
+        <button class="form-control" class="btn btn-primary" type="submit" [disabled]="loginForm.invalid">Log In</button>
         <!-- {isPending && <button className="btn" disabled>Loading...</button>} -->
         <!-- {error && <div className="error">{error}</div>} -->
     </div>
+    <div class="text text-danger" id="errorMessage">
+        <!-- ERROR MESSAGE COMES HERE -->
+        {{errorMessage}}
+    </div>
+    <!-- <span *ngIf="errorInvalidCredentials">errorInvalidCredentials</span> -->
 </form>

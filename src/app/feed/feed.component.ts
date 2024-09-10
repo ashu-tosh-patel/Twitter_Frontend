@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FeedService } from './feed.service';
 import { userData } from '../tweet-component/userData';
 
@@ -14,6 +14,8 @@ export class FeedComponent implements OnInit{
   usersProfileForFeed : userData[] = []
   errorFollowingApi !: any
   errorUserApi !: any
+
+  @Input()
   userId !: number
 
   constructor(private feedService: FeedService){}
@@ -23,6 +25,7 @@ export class FeedComponent implements OnInit{
   ngOnInit(): void {
     this.getFollowingList();
     this.getUsersList();
+    // console.log(this.userId)
   }
 
   getFollowingList(){

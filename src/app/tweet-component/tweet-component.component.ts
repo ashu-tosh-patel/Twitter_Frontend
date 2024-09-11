@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TweetService } from './tweet.service';
 import { tweetData } from './tweetData';
 import { userData } from './userData';
@@ -20,16 +20,35 @@ export class TweetComponentComponent implements OnInit {
   // userDetails: userData[] = []
   // userDetailsById: userData[] = []
 
-  @Input()
-  user: any = { id: 1 };
+  constructor(private router: Router){}
 
-  profileImageLink: string = `http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/${this.user.id}.jpg`;
+  @Input()
+  user: any = null;
+
+  @Input()
+  loggedInUserId !: number;
 
   @Input()
   tweets: any = [];
 
+  likes:number = 100;
+  increaseLike(){
+    this.likes++;
+  }
+  navigateToProfile(): void {
+    this.router.navigate(['/profile', this.user.id, 'current', this.loggedInUserId]);
+  }
   ngOnInit(): void {
-
+    console.log(this.tweets[0].urls);
+  }
+  onEdit() {
+    alert("Edit clicked");
+  }
+  onDelete() {
+    alert("Delete clicked");
+  }
+  onReport() {
+    alert("Report clicked");
   }
   // Get user id of that user
   // userIdOfUser !: any

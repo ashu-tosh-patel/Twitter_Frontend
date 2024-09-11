@@ -27,5 +27,5 @@
             </div>
         </div>
     </div> -->
-        <app-tweet-component *ngFor="let user of usersProfileForFeed" [tweets]="user.tweetDTOs.slice(0,1)" [user]=user></app-tweet-component>
+        <app-tweet-component *ngFor="let user of usersProfileForFeed" [loggedInUserId]="userId" [tweets]="user.tweetDTOs.slice(0,1)" [user]=user></app-tweet-component>
 <!-- </div> -->

@@ -12,12 +12,13 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <img src="../../assets/cat.jpg" alt="Profile image"
-                        class="rounded-circle border border-white position-relative"
-                        style="width: 150px; margin-top: -75px; margin-left: 15px;" />
+                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{user.id}}.jpg"
+                        alt="Profile image" class="rounded-circle border border-white position-relative"
+                        style="width: 150px; height: 150px; margin-top: -75px; margin-left: 15px; " />
                 </div>
                 <div class="mt-2">
-                    <button class="btn btn-outline-primary rounded-pill">Follow</button>
+                    <button *ngIf="checkForFollow()" class="btn btn-outline-primary rounded-pill" (click)="followed()">Follow</button>
+                    <button *ngIf="!checkForFollow() && userId !== currentLoggedIn" class="btn btn-outline-primary rounded-pill" (click)="followed()" [disabled]="true">Following..</button>
                 </div>
             </div>
 
@@ -26,29 +27,32 @@
                 <h4 class="mb-1">{{user.name}}</h4>
                 <p class="text-muted mb-1">@{{user.username}}</p>
                 <p class="mb-3">
-                    {{user.bio}}- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi repellendus dolor
-                    tempore perspiciatis a, aspernatur ipsa deserunt facere accusantium praesentium corporis officiis
-                    veniam iure illum rem esse optio excepturi quibusdam?
+                    {{user.bio}}
                 </p>
 
                 <!-- location and all -->
                 <div class="d-flex text-muted">
-                    <span class="mr-3">
-                        <i class="fas fa-map-marker-alt"></i>{{user.location}}Mysore, Karnataka
+                    <span style="margin-right: 8px;">
+                        <i class="fas fa-map-marker-alt"></i>{{user.location}}
                     </span>
-                    <span class="mr-3">
-                        <i class="fas fa-calender-alt"></i> Joined January, 2015
+                    <span style="margin-right: 8px;">
+                        <i class="fas fa-address-book"></i> Joined January, 2015
                     </span>
+                </div>
+                <div>
                     <span>
                         <i class="fas fa-link"></i>
-                        <a href="https.//ashu.com" target="_blank">ashu.com</a>
+                        <a href={{user.website}} target="_blank">{{user.website}}</a>
                     </span>
+
                 </div>
 
                 <!-- followers and following -->
                 <div class="mt-2">
-                    <span class="mr-3"><strong>530</strong> Following</span>
-                    <span><strong> 1,200</strong> Followers</span>
+                    <button data-bs-toggle="modal" data-bs-target="#followingModal"
+                        class="mr-3 btn"><strong>{{followings.length|number}}</strong> Following </button>
+                    <button data-bs-toggle="modal" data-bs-target="#followersModal"
+                        class="btn"><strong>{{followers.length|number}}</strong> Followers</button>
                 </div>
             </div>
         </div>
@@ -79,7 +83,52 @@
         <div class="myContainer">
             <div class="col-12">
                 <!-- tweet cards -->
-                <app-tweet-component [tweets]="tweets" [user]="user"></app-tweet-component>
+                <app-tweet-component [loggedInUserId]="currentLoggedIn" [tweets]="tweets" [user]="user"></app-tweet-component>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<!-- class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" -->
+<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followersModalLabel">Followers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let follower of followers" class="d-flex align-items-center mb-3">
+                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{follower.id}}.jpg"
+                        class="rounded-circle me-3" width="50" height="50" alt="{{ follower.username }}">
+                    <div>
+                        <h6 class="mb-0">{{ follower.name }}</h6>
+                        <p class="text-muted mb-0">@{{ follower.username }}</p>
+                    </div>
+                    <button class="btn btn-danger ms-auto" (click)="removeFollower(follower.id)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followersModalLabel">Followings</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let following of followings" class="d-flex align-items-center mb-3">
+                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{following.id}}.jpg"
+                        class="rounded-circle me-3" width="50" height="50" alt="{{ following.username }}">
+                    <div>
+                        <h6 class="mb-0">{{ following.name }}</h6>
+                        <p class="text-muted mb-0">@{{ following.username }}</p>
+                    </div>
+                    <button class="btn btn-danger ms-auto" (click)="removeFollower(following.id)">Unfollow</button>
+                </div>
             </div>
         </div>
     </div>

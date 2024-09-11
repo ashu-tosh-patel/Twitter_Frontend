@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { SearchService } from './search.service';
@@ -12,11 +12,14 @@ import { userData } from './userData';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit{
+export class SearchBarComponent implements OnInit {
   searchControl = new FormControl('')
   suggestions$: Observable<any[]> = of([])
 
-  constructor(private searchService: SearchService, private router: Router){}
+  constructor(private searchService: SearchService, private router: Router) { }
+
+  @Input()
+  userId: number = 1;
 
   ngOnInit(): void {
     this.getUserDetails()
@@ -25,31 +28,31 @@ export class SearchBarComponent implements OnInit{
       switchMap(value => this.getSuggestions(value))
     )
   }
-  allSuggestions : userData[] = [] 
-  errorMessage !: any 
+  allSuggestions: userData[] = []
+  errorMessage !: any
 
-  showclickedUser(value: number){
-    this.router.navigate(['profile',value])
+  showclickedUser(value: number) {
+      this.router.navigate(['/profile', value, 'current', this.userId]);
   }
 
-  getSuggestions(query: any): Observable<any[]>{
+  getSuggestions(query: any): Observable<any[]> {
     console.log(query)
-    if(!query.trim()){
+    if (!query.trim()) {
       return of([]);
     }
     const filteredSuggestions = this.allSuggestions.filter(item =>
       (item.name != null && item.name.toLowerCase().includes(query.toLowerCase())) ||
-      (item.username != null && item.username.toLowerCase().includes(query.toLowerCase()) ) ||
+      (item.username != null && item.username.toLowerCase().includes(query.toLowerCase())) ||
       (item.bio != null && item.bio.toLowerCase().includes(query.toLowerCase()))
     )
     return of(filteredSuggestions)
   }
 
-  getUserDetails(){
+  getUserDetails() {
     this.searchService.getUserDetailsApi().subscribe(
       (data: userData[]) => {
         this.allSuggestions = data;
-        console.log('Data recv',this.allSuggestions)
+        console.log('Data recv', this.allSuggestions)
       },
       (error) => {
         this.errorMessage = error

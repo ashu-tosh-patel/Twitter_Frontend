@@ -1,16 +1,18 @@
 <!-- <p>search-bar works!</p> -->
 
 
-<div class="container">
+<div class="container myclass">
     <div class="row">
         <div class="search-container">
             <input [formControl]="searchControl" class="form-control" placeholder="Search Users.....">
-            <ul *ngIf="suggestions$ | async as suggestions">
-                <li *ngFor="let suggestion of suggestions" (click)="showclickedUser(suggestion.id)">
-                    <img src="assets/cat.jpg" alt="" style="width: 12%;" class="rounded-circle">
-                    {{suggestion.username}}
-                </li>
-            </ul>
+            <div *ngIf="suggestions$ | async as suggestions">
+                <ul >
+                    <li *ngFor="let suggestion of suggestions" (click)="showclickedUser(suggestion.id)">
+                        <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{suggestion.id}}.jpg" alt="" style="width: 12%;" class="rounded-circle">
+                        {{suggestion.username}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

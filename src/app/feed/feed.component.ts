@@ -25,7 +25,7 @@ export class FeedComponent implements OnInit{
   ngOnInit(): void {
     this.getFollowingList();
     this.getUsersList();
-    // console.log(this.userId)
+    console.log("in feed",this.userId)
   }
 
   getFollowingList(){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SideBarService } from './side-bar.service';
@@ -12,8 +12,24 @@ export class SideBarComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private sideBarService: SideBarService) { }
 
   public tweetForm: FormGroup = new FormGroup({});
+  @Input()
+  userId!: number;
+  user: any = null;
+
+  navigateToProfile(): void {
+    this.router.navigate(['/profile', this.userId, 'current', this.userId]);
+  }
 
   ngOnInit(): void {
+    console.log(this.userId)
+
+    this.sideBarService.getUsersApi(this.userId).subscribe(res => {
+      this.user = res;
+      console.log(this.user);
+    },
+      err => {
+        console.log(err);
+      })
 
     this.tweetForm = this.fb.group({
       description: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(280)]],
@@ -25,9 +41,6 @@ export class SideBarComponent implements OnInit {
     })
   }
 
-  showProfile(value: number) {
-    this.router.navigate(['/profile', value])
-  }
 
   // handling upload file
   selectedFile: File | null = null;
@@ -77,10 +90,11 @@ export class SideBarComponent implements OnInit {
       urls: this.tweetForm.get('links')?.value.split(' ')
     }
 
-    this.sideBarService.uploadTweet(tweet, 2).subscribe(res => {
-      console.log("Tweet added",res);
+    this.sideBarService.uploadTweet(tweet, this.userId).subscribe(res => {
+      console.log("Tweet added", res);
     }, err => {
       console.log(err);
     })
+    this.router.navigate(['profile',this.userId])
   }
 }

@@ -3,11 +3,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3">
-            <app-side-bar></app-side-bar>
+        <div class="col-lg-3 myclass">
+            <app-side-bar [userId]="userIdFromUrl"></app-side-bar>
         </div>
         <div class="col-lg-6">
-            <app-search-bar></app-search-bar>
+            <app-search-bar [userId]="userIdFromUrl"></app-search-bar>
             <app-feed [userId]="userIdFromUrl"></app-feed>
         </div>
         <div class="col-lg-3">

@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   userDetailsFiltered !: userData[]
   validCredentials !: boolean
-  // errorInvalidCredentials : boolean = false
+  emailExists: boolean = false
+  displayError : any = null
   errorMessage !: any
 
   constructor(private loginServcie: LoginService, private router: Router, private fb: FormBuilder) { }
@@ -37,23 +38,39 @@ export class LoginComponent implements OnInit {
 
   verifyCredentials() {
     console.log('Here inside verify credentials')
-    this.errorMessage = null
+    this.emailExists = false
     this.validCredentials = false
-    this.userDetailsFiltered = this.userDetails.filter((x) => x.email == this.emailIncoming)
-    if (this.userDetailsFiltered[0].email == this.emailIncoming &&
-      this.userDetailsFiltered[0].password == this.passwordIncoming) 
-      {
-      this.validCredentials = true
+    this.displayError = null
+    // this.userDetails.forEach((x) => x.email === this.emailIncoming ?
+    //   this.emailExists = true : this.emailExists = false)
+    for(let i = 0;i < this.userDetails.length;i++){
+      if(this.userDetails.at(i)?.email == this.emailIncoming){
+        this.emailExists = true
+      }
+    }
+    console.log('Email exists',this.emailExists)  
+    if (this.emailExists) {
+      this.userDetailsFiltered = this.userDetails.filter((x) => x.email == this.emailIncoming)
+      if (this.userDetailsFiltered[0].email == this.emailIncoming &&
+        this.userDetailsFiltered[0].password == this.passwordIncoming) {
+        this.validCredentials = true
+      }else{
+        this.displayError = "Password is not correct for this email"
+      }
+    }else{
+      this.displayError = "No such user exists. Enter valid email id and password"
     }
     if (this.validCredentials) {
       this.router.navigate(['/landing-page', this.userDetailsFiltered[0].id])
     }
   }
 
+
   getUserDetailsOfUser() {
     this.loginServcie.getUserWithEmailApi().subscribe(
       (data: userData[]) => {
-        this.userDetails = data
+        this.userDetails = data,
+        console.log('Here in login component',this.userDetails)
       },
       error => this.errorMessageApi = error,
     )

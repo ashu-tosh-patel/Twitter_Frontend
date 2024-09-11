@@ -25,9 +25,9 @@
         <!-- {isPending && <button className="btn" disabled>Loading...</button>} -->
         <!-- {error && <div className="error">{error}</div>} -->
     </div>
-    <div class="text text-danger" id="errorMessage">
+    <div class="alert alert-danger" id="errorMessage" *ngIf="displayError && emailIncoming && passwordIncoming ">
         <!-- ERROR MESSAGE COMES HERE -->
-        {{errorMessage}}
+        {{displayError}}
     </div>
     <!-- <span *ngIf="errorInvalidCredentials">errorInvalidCredentials</span> -->
 </form>

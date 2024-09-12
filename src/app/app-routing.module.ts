@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'home-page',component: HomePageComponent
   },
   {
-    path: 'profile/:userId', component: ProfileComponent
+    path: 'profile/:userId/current/:loggedInUserId', component: ProfileComponent
   },
   {
     path: 'explore-bar', component: ExploreBarComponent

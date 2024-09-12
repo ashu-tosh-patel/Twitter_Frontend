@@ -2,10 +2,13 @@
     <div class="sidebar-content">
         <div class="user">
             <div class="avatar">
-                <img src="../../assets/cat.jpg" alt="profile" />
+                <img (click)="navigateToProfile()" class="routerLink" src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{user.id}}.jpg"
+                    alt="profile" />
             </div>
-            <p (click)="showProfile(3)" class="btn">Hey Ashu & Sachin</p>
-            <p>ashusachin@infy.com</p>
+            <div>
+                <p (click)="navigateToProfile()" class="btn">Hey {{user.name}}</p>
+                <p>{{user.email}}</p>
+            </div>
         </div>
         <nav class="links">
             <ul>
@@ -54,8 +57,12 @@
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Launch demo modal
         </button> -->
-        <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#addPersonModal">
+        <button type="button" class="btn btn-secondary form-control addtweetbtn" data-bs-toggle="modal"
+            data-bs-target="#addPersonModal">
             Create Tweet
+        </button>
+        <button type="button" class="btn btn-danger form-control addtweetbtn mt-2" [routerLink]="['/home-page']">
+            Log out
         </button>
     </div>
 </div>
@@ -88,20 +95,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup] = "tweetForm" (ngSubmit)="addTweet()">
+                <form [formGroup]="tweetForm" (ngSubmit)="addTweet()">
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea id="description" class="form-control" formControlName = "description" placeholder="Enter text upto 280 characters"
-                            required="required"></textarea>
+                        <textarea id="description" class="form-control" formControlName="description"
+                            placeholder="Enter text upto 280 characters" required="required"></textarea>
                         <div class="descriptionError" *ngIf="tweetForm.controls['description'].touched">
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['required']">It is a required field</p>
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['maxlength']">Description is too long! Only 280 characters allowed</p>
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['description'].errors?.['minlength']">Description is too short!</p>
+                            <p class="alert alert-danger"
+                                *ngIf="tweetForm.controls['description'].errors?.['required']">It is a required field
+                            </p>
+                            <p class="alert alert-danger"
+                                *ngIf="tweetForm.controls['description'].errors?.['maxlength']">Description is too long!
+                                Only 280 characters allowed</p>
+                            <p class="alert alert-danger"
+                                *ngIf="tweetForm.controls['description'].errors?.['minlength']">Description is too
+                                short!</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="mediaType">Select Type of Media:</label>
-                        <select #media id="mediaType" formControlName="mediaType" class="form-select" (change)="selectedFile && checkFileType(selectedFile)">
+                        <select #media id="mediaType" formControlName="mediaType" class="form-select"
+                            (change)="selectedFile && checkFileType(selectedFile)">
                             <option selected disabled aria-label="Default select example">--Select an option--</option>
                             <option *ngFor="let option of mediaOptions" [value]="option.id">{{option.name}}</option>
                         </select>
@@ -109,31 +123,39 @@
                     <div class="form-group" *ngIf="media.value">
                         <div>
                             <label for="file">Upload File:</label>
-                            <input id="file" formControlName="media" class="form-control" type="file" (change)="onFileChange($event)">
+                            <input id="file" formControlName="media" class="form-control" type="file"
+                                (change)="onFileChange($event)">
                         </div>
                         <div class="mediaError" *ngIf="file?.touched && file?.invalid">
-                            <p *ngIf="file?.errors?.['invalidFileType']" class="alert alert-danger">File type does not match the selected media type</p>
+                            <p *ngIf="file?.errors?.['invalidFileType']" class="alert alert-danger">File type does not
+                                match the selected media type</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="hashtags">Add Hashtags:</label>
-                        <input id="hashtags" type="text" class="form-control" placeholder="#chill" formControlName="hashtags">
+                        <input id="hashtags" type="text" class="form-control" placeholder="#chill"
+                            formControlName="hashtags">
                         <div class="hashtagError" *ngIf="tweetForm.controls['hashtags'].touched">
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['hashtags'].errors?.['pattern']">Enter space seperated tags all starting with # and no extra spaces</p>
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['hashtags'].errors?.['pattern']">
+                                Enter space seperated tags all starting with # and no extra spaces</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="mentions">Add Mentions:</label>
-                        <input id="mentions" type="text" class="form-control" placeholder="@ashu" formControlName="mentions">
+                        <input id="mentions" type="text" class="form-control" placeholder="@ashu"
+                            formControlName="mentions">
                         <div class="mentionsError" *ngIf="tweetForm.controls['mentions'].touched">
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['mentions'].errors?.['pattern']">Enter space seperated tags all starting with @ and no extra spaces</p>
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['mentions'].errors?.['pattern']">
+                                Enter space seperated tags all starting with @ and no extra spaces</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="links">Add Links:</label>
-                        <input id="links" type="text" class="form-control" placeholder="http://www.github.com" formControlName="links">
+                        <input id="links" type="text" class="form-control" placeholder="http://www.github.com"
+                            formControlName="links">
                         <div class="linksError" *ngIf="tweetForm.controls['links'].touched">
-                            <p class="alert alert-danger" *ngIf="tweetForm.controls['links'].errors?.['pattern']">Incorrect link</p>
+                            <p class="alert alert-danger" *ngIf="tweetForm.controls['links'].errors?.['pattern']">
+                                Incorrect link</p>
                         </div>
                     </div>
 

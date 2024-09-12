@@ -4,45 +4,60 @@
     <div class="row">
         <div class="tweet-card" *ngFor="let tweet of tweets">
             <div class="tweet-header">
-                <img src={{profileImageLink}} alt="Profile Image" class="profile-img">
-                <div class="tweet-user-info">
+                <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{user.id}}.jpg"
+                    alt="Profile Image" class="profile-img routerLink" (click)="navigateToProfile()">
+                <div class="tweet-user-info routerLink" (click)="navigateToProfile()">
                     <h4 class="tweet-user-name">{{user.name}}</h4>
                     <h5 class="tweet-user-username">@{{user.username}}</h5>
                 </div>
-                <div class="tweet-options">...</div>
+                <div class="tweet-options dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        . . .
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li *ngIf="tweet.userId == loggedInUserId"><a class="dropdown-item" (click)="onEdit()">Edit</a>
+                        </li>
+                        <li *ngIf="tweet.userId == loggedInUserId"><a class="dropdown-item"
+                                (click)="onDelete()">Delete</a></li>
+                        <li *ngIf="tweet.userId !== loggedInUserId"><a class="dropdown-item"
+                                (click)="onReport()">Report</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="tweet-body">
                 <p class="tweet-message">{{tweet.message}}</p>
-                <div class="tweet-mentions">
+                <div class="tweet-mentions text-primary">
                     <ul>
                         <li *ngFor="let mention of tweet.mentions">{{mention}}</li>
                     </ul>
                 </div>
-                <div class="tweet-hashtags">
+                <div class="tweet-hashtags text-primary">
                     <ul>
                         <li *ngFor="let hashtag of tweet.hashtags">{{hashtag}}</li>
                     </ul>
                 </div>
-                <div class="tweet-links">
+                <div class="tweet-links text-primary">
                     <ul>
-                        <li *ngFor="let link of tweet.links">{{link}}</li>
+                        <li>{{tweet.urls[0]}}</li>
                     </ul>
                 </div>
                 <div class="tweet-image-container">
-                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/3.jpg" alt="Tweet Image">
+                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{(user.id+tweet.id)%10}}.jpg"
+                        alt="Tweet Image">
                 </div>
                 <div class="tweet-footer">
                     <p class="tweet-time">{{tweet.createdAt.substr(11,8)}} - {{tweet.createdAt.substr(0,10)}}</p>
                     <p class="tweet-engagement">
-                        <b>100</b> Retweets <b>5</b> Quote Tweets <b>25</b> Likes
+                        <b>10</b> Retweets <b>5</b> Quote Tweets <b>{{likes}}</b> Likes
                     </p>
                 </div>
             </div>
             <div class="tweet-actions">
-                <a href=""><img src="assets/message.png" alt="Reply" class="action-icon"></a>
-                <a href=""><img src="assets/retweet.jpg" alt="Retweet" class="action-icon"></a>
-                <a href=""><img src="assets/like.jpg" alt="Like" class="action-icon"></a>
-                <a href=""><img src="assets/shareIcon.jpg" alt="Share" class="action-icon"></a>
+                <img src="assets/message.png" alt="Reply" class="action-icon">
+                <img src="assets/retweet.jpg" alt="Retweet" class="action-icon">
+                <img (click)="increaseLike()" src="assets/like.jpg" alt="Like" class="action-icon">
+                <img src="assets/shareIcon.jpg" alt="Share" class="action-icon">
             </div>
         </div>
     </div>

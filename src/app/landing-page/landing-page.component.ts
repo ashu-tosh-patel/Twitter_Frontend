@@ -16,6 +16,6 @@ export class LandingPageComponent implements OnInit{
     this._aRoute.params.subscribe(
       value => this.userIdFromUrl = value['userId']
     )
-    // console.log(this.userIdFromUrl)
+    console.log(this.userIdFromUrl)
   }
 }

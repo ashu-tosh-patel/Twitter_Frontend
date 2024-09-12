@@ -21,15 +21,10 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.userId)
 
     this.sideBarService.getUsersApi(this.userId).subscribe(res => {
       this.user = res;
-      console.log(this.user);
-    },
-      err => {
-        console.log(err);
-      })
+    })
 
     this.tweetForm = this.fb.group({
       description: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(280)]],
@@ -77,8 +72,8 @@ export class SideBarComponent implements OnInit {
   //file validation end
 
   addTweet() {
-    console.log(this.tweetForm.get('hashtags')?.value.split(' '))
-    console.log(this.tweetForm.get('mediaType')?.value)
+    // console.log(this.tweetForm.get('hashtags')?.value.split(' '))
+    // console.log(this.tweetForm.get('mediaType')?.value)
     const tweet = {
       message: this.tweetForm.get('description')?.value,
       media: {
@@ -91,7 +86,7 @@ export class SideBarComponent implements OnInit {
     }
 
     this.sideBarService.uploadTweet(tweet, this.userId).subscribe(res => {
-      console.log("Tweet added", res);
+      // console.log("Tweet added", res);
     }, err => {
       console.log(err);
     })

@@ -52,7 +52,7 @@ export class SearchBarComponent implements OnInit {
     this.searchService.getUserDetailsApi().subscribe(
       (data: userData[]) => {
         this.allSuggestions = data;
-        console.log('Data recv', this.allSuggestions)
+        // console.log('Data recv', this.allSuggestions)
       },
       (error) => {
         this.errorMessage = error

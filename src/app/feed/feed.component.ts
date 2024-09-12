@@ -25,7 +25,7 @@ export class FeedComponent implements OnInit{
   ngOnInit(): void {
     this.getFollowingList();
     this.getUsersList();
-    console.log("in feed",this.userId)
+    // console.log("in feed",this.userId)
   }
 
   getFollowingList(){
@@ -40,7 +40,7 @@ export class FeedComponent implements OnInit{
       (list : userData[]) => {
         this.usersList = list,
         this.usersProfileForFeed = this.usersList.filter((x) => this.followingList.includes(x.id))
-        console.log('Data received of Users',this.usersProfileForFeed)
+        // console.log('Data received of Users',this.usersProfileForFeed)
       },
       (error) => {
         this.errorUserApi = error

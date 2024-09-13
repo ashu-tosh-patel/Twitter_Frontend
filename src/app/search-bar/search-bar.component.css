@@ -1,8 +1,8 @@
 .search-container{
-    width: 92%;
+    /* width: 92%; */
     position: relative;
     /* width: 300px; */
-    max-width: 700px;
+    /* max-width: 700px; */
     margin-bottom: 10px;
 }
 .myclass{
@@ -13,7 +13,7 @@
 
 }
 input{
-    width: 100%;
+    /* width: 100%; */
     padding: 8px;
     box-sizing: border-box;
 }

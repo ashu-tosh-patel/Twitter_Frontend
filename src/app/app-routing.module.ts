@@ -9,6 +9,7 @@ import { FeedComponent } from './feed/feed.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,9 @@ const routes: Routes = [
   },
   {
     path: 'tweet-detail/:tweetId', component: TweetDetailsComponent
+  },
+  {
+    path: 'soon', component:CommingSoonComponent
   },
   {
     path: '**', redirectTo: '/home-page', pathMatch: 'full'

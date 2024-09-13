@@ -3,7 +3,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 myclass">
+        <div>
+            <button class="btn btn-outline-primary d-md-none mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" target="#sidebar" controls="sidebar" expanded="false" aria-label="Toggle Sidebar">. . .</button>
+        </div>
+        <!-- <div class="col-lg-3 myclass">
+            <app-side-bar [userId]="userIdFromUrl"></app-side-bar>
+        </div> -->
+        <div class="col-lg-3 col-md-3 col-12 collapse d-md-block myclass" id="sidebar">
             <app-side-bar [userId]="userIdFromUrl"></app-side-bar>
         </div>
         <div class="col-lg-6">

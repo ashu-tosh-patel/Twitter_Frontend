@@ -1,7 +1,7 @@
 .search-container{
-    position: relative;
-    width: 300px;
-    z-index: 1;
+    /* position: relative; */
+    /* width: 300px; */
+    /* z-index: 1; */
 }
 .myclass{
     margin-top: 20px;
@@ -13,9 +13,9 @@ input{
 }
 
 ul{
-    position: absolute;
-    top: 100%;
-    left: 0;
+    /* position: absolute; */
+    /* top: 100%; */
+    /* left: 0; */
     width: 100%;
     background: white;
     border: 1px solid #ddd;

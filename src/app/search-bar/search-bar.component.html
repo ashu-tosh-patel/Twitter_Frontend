@@ -6,7 +6,7 @@
         <div class="search-container">
             <input [formControl]="searchControl" class="form-control" placeholder="Search Users.....">
             <div *ngIf="suggestions$ | async as suggestions">
-                <ul >
+                <ul class="list">
                     <li *ngFor="let suggestion of suggestions" (click)="showclickedUser(suggestion.id)">
                         <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{suggestion.id}}.jpg" alt="" style="width: 12%;" class="rounded-circle">
                         {{suggestion.username}}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from './profile.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { ProfileService } from './profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private profileService: ProfileService) { }
+  constructor(private activatedRoute: ActivatedRoute, private profileService: ProfileService,
+    private router: Router
+  ) { }
 
   userId !: number;
   user: any = null;
@@ -20,6 +22,10 @@ export class ProfileComponent implements OnInit {
   followingsIds: any = [];
 
   currentLoggedIn: number = 1;
+
+  navigateToComingSoon(): void {
+    this.router.navigate(['/soon'])
+  }
 
   checkForFollow(): boolean {
     // console.log("check following called");

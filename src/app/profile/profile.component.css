@@ -13,3 +13,12 @@
     display: flex;
     justify-content: center;
 }
+.newStyle > :hover{
+    border: 2px solid black;
+    font-weight: 500;
+}
+.btn-opt{
+    color: black;
+    /* font-weight: 500; */
+    font-style:oblique;
+}

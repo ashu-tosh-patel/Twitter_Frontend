@@ -13,7 +13,7 @@ export class SideBarService {
     return this.http.post(`http://localhost:8080/tweet-api/user/${userId}/tweet`,tweet);
   }
   getUsersApi(value: number): Observable<any>{
-    console.log(value)
+    // console.log(value)
     return this.http.get<any>('http://localhost:8765/users/getUser/'+value)
   }
 

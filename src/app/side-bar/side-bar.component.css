@@ -7,6 +7,7 @@
     position: fixed;
     color: #fff;
     margin-left: 0;
+    z-index: 100;
 }
 .addtweetbtn{
     margin-left: 10%;
@@ -22,17 +23,20 @@
     font-weight: bold;
     text-align: center;
     letter-spacing: 1px;
-    padding: 40px 30px;
+    padding: 20px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.sidebar ul{
+    margin-top: 10px;
 }
 
 .sidebar .links {
-    margin-top: 80px;
+    /* margin-top: 80px; */
     margin-left: 20px;
 }
 
 .sidebar .links li {
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .sidebar .links a {

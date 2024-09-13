@@ -18,21 +18,21 @@ const routes: Routes = [
   {
     path: 'profile/:userId/current/:loggedInUserId', component: ProfileComponent
   },
-  {
-    path: 'explore-bar', component: ExploreBarComponent
-  },
-  {
-    path: 'tweet-component/:tweetId', component: TweetComponentComponent
-  },
+  // {
+  //   path: 'explore-bar', component: ExploreBarComponent
+  // },
+  // {
+  //   path: 'tweet-component/:tweetId', component: TweetComponentComponent
+  // },
   {
     path: 'signup', component: SignupComponent
   },
   {
     path: 'login', component: LoginComponent
   },
-  {
-    path: 'feed/:userId', component: FeedComponent
-  },
+  // {
+  //   path: 'feed/:userId', component: FeedComponent
+  // },
   {
     path: 'landing-page/:userId', component: LandingPageComponent
   },
@@ -40,7 +40,7 @@ const routes: Routes = [
     path: 'tweet-detail/:tweetId', component: TweetDetailsComponent
   },
   {
-    path: 'soon', component:CommingSoonComponent
+    path: 'soon', component: CommingSoonComponent
   },
   {
     path: '**', redirectTo: '/home-page', pathMatch: 'full'

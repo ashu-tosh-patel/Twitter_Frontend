@@ -20,6 +20,14 @@ export class SideBarComponent implements OnInit {
     this.router.navigate(['/profile', this.userId, 'current', this.userId]);
   }
 
+  navgateToLandingPage(): void {
+    this.router.navigate(['/landing-page',this.userId])
+  }
+
+  navigateToComingSoon(): void {
+    this.router.navigate(['/soon'])
+  }
+
   ngOnInit(): void {
 
     this.sideBarService.getUsersApi(this.userId).subscribe(res => {

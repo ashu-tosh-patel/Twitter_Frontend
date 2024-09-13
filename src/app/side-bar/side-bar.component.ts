@@ -95,6 +95,7 @@ export class SideBarComponent implements OnInit {
     }, err => {
       console.log(err);
     })
-    this.router.navigate(['profile',this.userId])
+    alert("Tweet created");
+    // this.router.navigate(['profile',this.userId])
   }
 }

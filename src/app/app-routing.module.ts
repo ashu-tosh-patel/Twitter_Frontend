@@ -12,7 +12,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
-    path: 'home-page',component: HomePageComponent
+    path: 'home-page', component: HomePageComponent
   },
   {
     path: 'profile/:userId/current/:loggedInUserId', component: ProfileComponent
@@ -30,13 +30,13 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path:'feed/:userId',component:FeedComponent
+    path: 'feed/:userId', component: FeedComponent
   },
   {
-    path:'landing-page/:userId',component:LandingPageComponent
+    path: 'landing-page/:userId', component: LandingPageComponent
   },
   {
-    path:'tweet-detail/:tweetId',component:TweetDetailsComponent
+    path: 'tweet-detail/:tweetId', component: TweetDetailsComponent
   },
   {
     path: '**', redirectTo: '/home-page', pathMatch: 'full'

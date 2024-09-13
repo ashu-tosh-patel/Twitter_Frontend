@@ -22,8 +22,10 @@ export class ProfileComponent implements OnInit {
   currentLoggedIn: number = 1;
 
   checkForFollow(): boolean {
+    // console.log("check following called");
     if (this.userId === this.currentLoggedIn) return false;
-    for (var i in this.followersIds) {
+    for (const i of this.followersIds) {
+      // console.log("followers Id: ",i,"Current:",this.currentLoggedIn)
       if (parseInt(i) == this.currentLoggedIn) return false;
     }
     return true;
@@ -61,10 +63,22 @@ export class ProfileComponent implements OnInit {
     alert("Followed");
     this.profileService.follow(this.currentLoggedIn, this.userId).subscribe(res => {
       console.log(res);
-
+      this.ngOnInit();
     }, err => {
       console.log(err);
     })
+  }
+
+  unfollow() {
+    // alert(this.currentLoggedIn + ":" + this.userId)
+    alert("Unfollowed")
+    this.profileService.unfollow(this.currentLoggedIn, this.userId).subscribe(res => {
+      console.log(res);
+      this.ngOnInit();
+    },
+      err => {
+        console.log(err);
+      })
   }
 
   removeFollower(userId: number) {

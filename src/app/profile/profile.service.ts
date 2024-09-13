@@ -26,4 +26,8 @@ export class ProfileService {
   follow(follower: number, following: number) {
     return this.http.post('http://localhost:8082/followingAndFollower-api/follow/' + follower + '/' + following, {});
   }
+  unfollow(currentUserId: number, targetUserId: number) {
+    console.log('Unfollow request',currentUserId,targetUserId)
+    return this.http.delete('http://localhost:8082/followingAndFollower-api/unfollow/' + currentUserId + '/' + targetUserId);
+  }
 }

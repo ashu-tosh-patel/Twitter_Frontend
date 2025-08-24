@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SideBarService } from './side-bar.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-side-bar',
@@ -9,7 +12,7 @@ import { SideBarService } from './side-bar.service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  constructor(private router: Router, private fb: FormBuilder, private sideBarService: SideBarService) { }
+  constructor(private router: Router, private fb: FormBuilder, private sideBarService: SideBarService,private storage: AngularFireStorage) { }
 
   public tweetForm: FormGroup = new FormGroup({});
   @Input()
@@ -47,6 +50,9 @@ export class SideBarComponent implements OnInit {
 
   // handling upload file
   selectedFile: File | null = null;
+  downloadURL: string | null = null;
+
+
   mediaOptions = [
     { id: 'IMAGE', name: 'Image', allowedTypes: ['image/jpeg', 'image/jpg', 'image/png'] },
     { id: 'VIDEO', name: 'Video', allowedTypes: ['video/mp4', 'video/mkv'] },
@@ -60,6 +66,7 @@ export class SideBarComponent implements OnInit {
     if (file && this.tweetForm.get('mediaType')?.value) {
       this.checkFileType(file);
     }
+    if(!this.tweetForm.get('media')?.errors)this.uploadFile(event);
   }
   checkFileType(file: File) {
     const selectedMediaType = this.tweetForm.get('mediaType')?.value;
@@ -75,6 +82,26 @@ export class SideBarComponent implements OnInit {
   }
   get file() {
     return this.tweetForm.get('media');
+  }
+
+  uploadFile(event: any): void {
+    event.preventDefault();
+    if (!this.selectedFile) return;
+
+    const filePath = `uploads/${Date.now()}_${this.selectedFile.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const uploadTask = this.storage.upload(filePath, this.selectedFile);
+
+    uploadTask.snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url: string) => {
+            this.downloadURL = url;
+            console.log('File available at:', url);
+          });
+        })
+      )
+      .subscribe();
   }
 
   //file validation end

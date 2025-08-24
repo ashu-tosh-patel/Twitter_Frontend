@@ -4,7 +4,7 @@
     <div class="row">
         <div class="tweet-card" *ngFor="let tweet of tweets">
             <div class="tweet-header">
-                <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{user.id}}.jpg"
+                <img src="../../assets/profiles/{{user.id}}.jpg"
                     alt="Profile Image" class="profile-img routerLink" (click)="navigateToProfile()">
                 <div class="tweet-user-info routerLink" (click)="navigateToProfile()">
                     <h4 class="tweet-user-name">{{user.name}}</h4>
@@ -43,7 +43,7 @@
                     </ul>
                 </div>
                 <div class="tweet-image-container">
-                    <img src="http://myslab42s08:3000/ashutosh.patel/MyTwitterAssets/raw/branch/main/{{(user.id+tweet.id)%10}}.jpg"
+                    <img src="../../assets/profiles/{{(user.id+tweet.id)%10}}.jpg"
                         alt="Tweet Image">
                 </div>
                 <div class="tweet-footer">

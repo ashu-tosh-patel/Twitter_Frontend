@@ -19,6 +19,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [ExploreBarServiceService],
   bootstrap: [AppComponent]

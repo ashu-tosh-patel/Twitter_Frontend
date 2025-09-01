@@ -10,13 +10,3 @@ export const environment = {
       }
   };
   
-
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAB3TDvqKc8U8T_iSVU5ZKZ1i4VWgbbl88",
-//     authDomain: "twitter-angular-7fc45.firebaseapp.com",
-//     projectId: "twitter-angular-7fc45",
-//     storageBucket: "twitter-angular-7fc45.firebasestorage.app",
-//     messagingSenderId: "248389049203",
-//     appId: "1:248389049203:web:9561b9c5ba52f549ae4306"
-//   };
